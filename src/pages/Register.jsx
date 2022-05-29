@@ -21,6 +21,7 @@ function Register() {
                         type="text"
                         placeholder='Username'
                         name='username'
+
                     />
                 </form>
 
