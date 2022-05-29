@@ -1,6 +1,7 @@
 import React from 'react'
 import style from 'styled-components'
 import { Link } from 'react-router-dom'
+import Logo from '../assets/logo.svg'
 
 function Register() {
 
@@ -19,7 +20,7 @@ function Register() {
             <FormContainer>
                 <form onSubmit={event => handleSubmit(event)}>
                     <div className="brand">
-                        <img src="" alt="" />
+                        <img src={Logo} alt="logo" />
                         <h1>snappy</h1>
                     </div>
                     <input
@@ -48,7 +49,7 @@ function Register() {
                     />
                     <button type='submit'>Create User</button>
                     <span>
-                        already have an account? <Link to='/login'>Login</Link>
+                        Already have an account? <Link to='/login'>Login</Link>
                     </span>
                 </form>
 
@@ -58,7 +59,8 @@ function Register() {
 }
 
 const FormContainer = style.div`
-    
+    height: 100vh;
+    width: 100vw;
 `
 
 export default Register
