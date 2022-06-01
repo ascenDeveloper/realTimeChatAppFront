@@ -9,7 +9,6 @@ import { setAvatarRoute } from '../utils/APIRoutes'
 import { Buffer } from 'buffer'
 
 function SetAvatar() {
-    const api = process.env.REACT_APP_API_AVATARS
     const navigate = useNavigate()
     const [avatars, setAvatars] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -43,11 +42,16 @@ function SetAvatar() {
         }
     }
     useEffect(() => {
+        if (localStorage.getItem('chat-app-user')) {
+            navigate('/')
+        }
+    }, [])
+    useEffect(() => {
         const fetchImage = async () => {
             const data = [];
             for (let i = 0; i < 4; i++) {
                 const image = await axios.get(
-                    `${api}/${Math.round(Math.random() * 1000)}?apikey=${process.env.REACT_APP_API_AVATARS_CODE}`
+                    `${process.env.REACT_APP_API_AVATARS}/${Math.round(Math.random() * 1000)}?apikey=${process.env.REACT_APP_API_AVATARS_CODE}`
                 );
                 const buffer = new Buffer(image.data);
                 data.push(buffer.toString("base64"));
@@ -56,7 +60,7 @@ function SetAvatar() {
             setIsLoading(false);
         }
         fetchImage()
-    });
+    }, [isLoading]);
 
     return (
         <>
