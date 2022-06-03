@@ -23,7 +23,7 @@ function Login() {
 
     useEffect(() => {
         if (localStorage.getItem('chat-app-user')) {
-            navigate('/')
+            navigate("/");
         }
     }, [])
 
